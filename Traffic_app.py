@@ -6,7 +6,6 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.applications.xception import Xception
 from pickle import load
-import matplotlib.pyplot as plt
 import argparse
 import numpy as np
 from PIL import Image
