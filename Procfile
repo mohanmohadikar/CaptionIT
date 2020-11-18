@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app
+web: gunicorn Traffic_app:app 
