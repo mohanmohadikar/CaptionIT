@@ -111,6 +111,7 @@ def pred(img_path):
     img = Image.open(img_path)
 
     description = generate_desc(model, tokenizer, photo, max_length)
+    print("desc:---->"+str(description))
     return description
 
 @app.route('/')
@@ -127,6 +128,7 @@ def upload():
         # Make prediction
       #  result = image_processing(file_path)
         result = pred(file_path)
+        print("result:------>"+str(result))
      #   s = [str(i) for i in result]
       #  a = int("".join(s))
       #  result = "Predicted Traffic🚦Sign is: " +classes[a]
