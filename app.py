@@ -19,14 +19,14 @@ def load__model():
     print('[INFO] : Model loading ................')
     global model
     # model = tf.keras.models.load_model(MODEL_FOLDER + '/catsVSdogs.h5')
-    model = load_model(MODEL_FOLDER + '/model.h5')
+    model = load_model(MODEL_FOLDER + '/cat_dog_classifier.h5')
     global graph
     graph = tf.get_default_graph()
     print('[INFO] : Model loaded')
 
 
 def predict(fullpath):
-    data = image.load_img(fullpath, target_size=(229, 229, 3))
+    data = image.load_img(fullpath, target_size=(128, 128, 3))
     # (150,150,3) ==> (1,150,150,3)
     data = np.expand_dims(data, axis=0)
     # Scaling
