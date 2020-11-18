@@ -2,12 +2,6 @@ from flask import *
 import os
 from werkzeug.utils import secure_filename
 from keras.models import load_model
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
-from keras.applications.xception import Xception
-from pickle import load
-import matplotlib.pyplot as plt
-import argparse
 import numpy as np
 from PIL import Image
 
@@ -67,51 +61,6 @@ def image_processing(img):
     X_test=np.array(data)
     Y_pred = model.predict_classes(X_test)
     return Y_pred
-
-def extract_features(img):
-    model = load_model('./model/model.h5')
-    image = Image.open(img)
-    image = image.resize((299,299))
-    image = np.array(image)
-    if image.shape[2] == 4: 
-        image = image[..., :3]
-    image = np.expand_dims(image, axis=0)
-    image = image/127.5
-    image = image - 1.0
-    feature = model.predict(image)
-    return feature
-
-def word_for_id(integer, tokenizer):
-    for word, index in tokenizer.word_index.items():
-        if index == integer:
-            return word
-    return None
-
-def generate_desc(model, tokenizer, photo, max_length):
-    in_text = 'start'
-    for i in range(max_length):
-        sequence = tokenizer.texts_to_sequences([in_text])[0]
-        sequence = pad_sequences([sequence], maxlen=max_length)
-        pred = model.predict([photo,sequence], verbose=0)
-        pred = np.argmax(pred)
-        word = word_for_id(pred, tokenizer)
-        if word is None:
-            break
-        in_text += ' ' + word
-        if word == 'end':
-            break
-    return in_text
-
-def pred(img_path):
-    max_length = 32
-    tokenizer = load(open("static/tokenizer.p","rb"))
-    model = load_model('./model/model.h5')
-    xception_model = Xception(include_top=False, pooling="avg")
-
-    photo = extract_features(img_path, xception_model)
-    img = Image.open(img_path)
-
-    description = generate_desc(model, tokenizer, photo, max_length)
 
 @app.route('/')
 def index():
