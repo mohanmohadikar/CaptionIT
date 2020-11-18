@@ -26,7 +26,7 @@ def load__model():
 
 
 def predict(fullpath):
-    data = image.load_img(fullpath, target_size=(299, 299, 3))
+    data = image.load_img(fullpath, target_size=(229, 229, 3))
     # (150,150,3) ==> (1,150,150,3)
     data = np.expand_dims(data, axis=0)
     # Scaling
