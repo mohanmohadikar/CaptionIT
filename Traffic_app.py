@@ -62,6 +62,9 @@ def image_processing(img):
     Y_pred = model.predict_classes(X_test)
     return Y_pred
 
+def pred(img):
+    pass
+
 @app.route('/')
 def index():
     return render_template('index.html')
