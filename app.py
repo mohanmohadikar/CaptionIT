@@ -1,9 +1,10 @@
 import os
-from flask import Flask, render_template, request, send_from_directory
-from keras_preprocessing import image
-from keras.models import load_model
 import numpy as np
 import tensorflow as tf
+from flask import Flask, render_template, request, send_from_directory
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import load_model
+
 
 app = Flask(__name__)
 
@@ -21,7 +22,7 @@ def load__model():
     # model = tf.keras.models.load_model(MODEL_FOLDER + '/catsVSdogs.h5')
     model = load_model(MODEL_FOLDER + '/cat_dog_classifier.h5')
     global graph
-    graph = tf.get_default_graph()
+    graph = tf.compat.v1.get_default_graph()
     print('[INFO] : Model loaded')
 
 
