@@ -1,10 +1,11 @@
 from flask import *
+import tensorflow as tf
 import os
 from werkzeug.utils import secure_filename
-from keras.models import load_model
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
-from keras.applications.xception import Xception
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.applications.xception import Xception
 from pickle import load
 import argparse
 import numpy as np
@@ -107,8 +108,9 @@ def pred(img_path):
     model = load_model("static/model.h5")
     xception_model = Xception(include_top=False, pooling="avg")
 
-    photo = extract_features(img_path, xception_model)
+    photo = extract_features(img_path)
     img = Image.open(img_path)
+    print("photo:--->"+str(photo))
 
     description = generate_desc(model, tokenizer, photo, max_length)
     print("desc:---->"+str(description))
