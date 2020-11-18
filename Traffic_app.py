@@ -80,7 +80,7 @@ def upload():
         result = "Predicted Traffic🚦Sign is: " +classes[a]
         os.remove(file_path)
         return result
-    return None
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
