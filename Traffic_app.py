@@ -128,8 +128,8 @@ def upload():
         file_path = secure_filename(f.filename)
         f.save(file_path)
         # Make prediction
-      #  result = image_processing(file_path)
-        result = pred(file_path)
+        result = image_processing(file_path)
+     #   result = pred(file_path)
         print("result:------>"+str(result))
      #   s = [str(i) for i in result]
       #  a = int("".join(s))
