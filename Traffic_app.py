@@ -1,12 +1,12 @@
 from flask import *
-import tensorflow as tf
 import os
 from werkzeug.utils import secure_filename
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.applications.xception import Xception
+from keras.models import load_model
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+from keras.applications.xception import Xception
 from pickle import load
+import matplotlib.pyplot as plt
 import argparse
 import numpy as np
 from PIL import Image
@@ -69,7 +69,7 @@ def image_processing(img):
     return Y_pred
 
 def extract_features(img):
-    model = load_model("static/model.h5")
+    model = load_model('./model/model.h5')
     image = Image.open(img)
     image = image.resize((299,299))
     image = np.array(image)
@@ -105,16 +105,13 @@ def generate_desc(model, tokenizer, photo, max_length):
 def pred(img_path):
     max_length = 32
     tokenizer = load(open("static/tokenizer.p","rb"))
-    model = load_model("static/model.h5")
+    model = load_model('./model/model.h5')
     xception_model = Xception(include_top=False, pooling="avg")
 
-    photo = extract_features(img_path)
+    photo = extract_features(img_path, xception_model)
     img = Image.open(img_path)
-    print("photo:--->"+str(photo))
 
     description = generate_desc(model, tokenizer, photo, max_length)
-    print("desc:---->"+str(description))
-    return description
 
 @app.route('/')
 def index():
@@ -129,8 +126,6 @@ def upload():
         f.save(file_path)
         # Make prediction
         result = image_processing(file_path)
-     #   result = pred(file_path)
-        print("result:------>"+str(result))
         s = [str(i) for i in result]
         a = int("".join(s))
         result = "Predicted Traffic🚦Sign is: " +classes[a]
