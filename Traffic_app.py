@@ -68,7 +68,7 @@ def image_processing(img):
     return Y_pred
 
 def extract_features(img):
-    model = load_model('./model/model.h5')
+    model = load_model("static/model.h5")
     image = Image.open(img)
     image = image.resize((299,299))
     image = np.array(image)
@@ -104,7 +104,7 @@ def generate_desc(model, tokenizer, photo, max_length):
 def pred(img_path):
     max_length = 32
     tokenizer = load(open("static/tokenizer.p","rb"))
-    model = load_model('./model/model.h5')
+    model = load_model("static/model.h5")
     xception_model = Xception(include_top=False, pooling="avg")
 
     photo = extract_features(img_path, xception_model)
