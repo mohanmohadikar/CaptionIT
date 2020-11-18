@@ -111,6 +111,7 @@ def pred(img_path):
     img = Image.open(img_path)
 
     description = generate_desc(model, tokenizer, photo, max_length)
+    return description
 
 @app.route('/')
 def index():
