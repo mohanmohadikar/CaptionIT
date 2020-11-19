@@ -96,11 +96,11 @@ def success():
 
 				predictions = {
 					  "class1":res,
-					    "class2":class_result[1],
-					    "class3":class_result[2],
-					    "prob1": prob_result[0],
-					    "prob2": prob_result[1],
-					    "prob3": prob_result[2],
+					    "class2":"class_result[1]",
+					    "class3":"class_result[2]",
+					    "prob1": "prob_result[0]",
+					    "prob2": "prob_result[1]",
+					    "prob3": "prob_result[2]",
 				}
 
 			except Exception as e : 
