@@ -121,15 +121,15 @@ def success():
 				img_path = os.path.join(target_img , file.filename)
 				img = file.filename
 
-				class_result , prob_result = predict(img_path , model)
+			#	class_result , prob_result = predict(img_path , model)
 
 				predictions = {
-					  "class1":class_result[0],
-					    "class2":class_result[1],
-					    "class3":class_result[2],
-					    "prob1": prob_result[0],
-					    "prob2": prob_result[1],
-					    "prob3": prob_result[2],
+					  "class1":res,
+					    "class2":"class_result[1]",
+					    "class3":"class_result[2]",
+					    "prob1": "prob_result[0]",
+					    "prob2": "prob_result[1]",
+					    "prob3": "prob_result[2]",
 				}
 
 			else:
