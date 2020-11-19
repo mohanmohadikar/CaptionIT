@@ -90,12 +90,12 @@ def success():
 				output.close()
 				img = filename
 
-				res = pred(img_path)
+				#res = pred(img_path)
 
 				class_result , prob_result = predict(img_path , model)
 
 				predictions = {
-					  "class1":res,
+					  "class1":"res",
 					    "class2":class_result[1],
 					    "class3":class_result[2],
 					    "prob1": prob_result[0],
