@@ -95,7 +95,7 @@ def success():
 				class_result , prob_result = predict(img_path , model)
 
 				predictions = {
-					  "class1":"res",
+					  "class1":class_result[0],
 					    "class2":class_result[1],
 					    "class3":class_result[2],
 					    "prob1": prob_result[0],
