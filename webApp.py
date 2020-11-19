@@ -122,7 +122,7 @@ def success():
 				img = file.filename
 
 			#	class_result , prob_result = predict(img_path , model)
-
+			#really nigga.
 				predictions = {
 					  "class1":res,
 					    "class2":"class_result[1]",
