@@ -1,1 +1,2 @@
-web: gunicorn Traffic_app:app 
+
+web: gunicorn webApp:app --timeout 30
