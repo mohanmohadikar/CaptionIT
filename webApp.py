@@ -19,9 +19,9 @@ import flask
 import urllib
 from PIL import Image
 from tensorflow.keras.models import load_model
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
-from keras.applications.xception import Xception
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.applications.xception import Xception
 from pickle import load
 from flask import Flask , render_template  , request , send_file
 from tensorflow.keras.preprocessing.image import load_img , img_to_array
