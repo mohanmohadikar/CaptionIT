@@ -92,7 +92,7 @@ def success():
 
 				res = pred(img_path)
 
-				class_result , prob_result = predict(img_path , model)
+				#class_result , prob_result = predict(img_path , model)
 
 				predictions = {
 					  "class1":res,
