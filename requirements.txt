@@ -3,6 +3,7 @@ gunicorn==20.0.4
 Keras==1.1.0
 Keras-Applications
 Keras-Preprocessing==1.1.0
+tensorflow==2.1.2
 numpy==1.19.0
 Pillow==7.1.2
 Werkzeug==1.0.1
