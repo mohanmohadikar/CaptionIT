@@ -31,7 +31,7 @@ from tensorflow.keras.preprocessing.image import load_img , img_to_array
 app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 #model = load_model(os.path.join(BASE_DIR , 'ModelWebApp.hdf5'))
-model = load_model(os.path.join(BASE_DIR , 'model.h5'))
+model = load_model('model.h5')
 
 
 ALLOWED_EXT = set(['jpg' , 'jpeg' , 'png' , 'jfif'])
