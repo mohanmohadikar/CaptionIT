@@ -35,7 +35,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 model = load_model("static/model.h5")
 joblib_file = open("static/tokenizer.p", "rb")
 # Load from file
-tokenizer = joblib.load(joblib_file)
+tokenizer = pickle.load(joblib_file)
 
 
 ALLOWED_EXT = set(['jpg' , 'jpeg' , 'png' , 'jfif'])
