@@ -20,11 +20,11 @@ import urllib
 from PIL import Image
 import numpy as np
 import tensorflow as tf
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.applications.xception import Xception
-from pickle import load
+import pickle
 from flask import Flask , render_template  , request , send_file
 from tensorflow.keras.preprocessing.image import load_img , img_to_array
 
@@ -194,7 +194,7 @@ def generate_desc(model, tokenizer, photo, max_length):
 
 def pred(img_path):
 	max_length = 32
-	tokenizer = load(open("static/tokenizer.p","rb"))
+	tokenizer = pickle.load(open("static/tokenizer.p","rb"))
 #	model = load_model(os.path.join(BASE_DIR , 'model.h5'))
 	#model = load_model('models/model_9.h5')
 	xception_model = Xception(include_top=False, pooling="avg")
