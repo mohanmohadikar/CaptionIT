@@ -24,6 +24,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.applications.xception import Xception
+from sklearn.externals import joblib
 import pickle
 from flask import Flask , render_template  , request , send_file
 from tensorflow.keras.preprocessing.image import load_img , img_to_array
@@ -32,6 +33,9 @@ app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 #model = load_model(os.path.join(BASE_DIR , 'ModelWebApp.hdf5'))
 model = load_model("static/model.h5")
+joblib_file = "static/tokenizer.p"
+# Load from file
+tokenizer = joblib.load(joblib_file)
 
 
 ALLOWED_EXT = set(['jpg' , 'jpeg' , 'png' , 'jfif'])
@@ -194,7 +198,7 @@ def generate_desc(model, tokenizer, photo, max_length):
 
 def pred(img_path):
 	max_length = 32
-	tokenizer = pickle.load(open("static/tokenizer.p","rb"))
+#	tokenizer = pickle.load(open("static/tokenizer.p","rb"))
 #	model = load_model(os.path.join(BASE_DIR , 'model.h5'))
 	#model = load_model('models/model_9.h5')
 	xception_model = Xception(include_top=False, pooling="avg")
