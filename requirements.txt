@@ -1,5 +1,6 @@
 Flask==1.1.2
 gunicorn==20.0.4
+h5py==2.10.0
 Keras==1.1.0
 Keras-Applications
 Keras-Preprocessing==1.1.0
