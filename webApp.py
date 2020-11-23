@@ -33,7 +33,7 @@ app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 #model = load_model(os.path.join(BASE_DIR , 'ModelWebApp.hdf5'))
 model = load_model("static/model.h5")
-joblib_file = open("static/tokenizer.p")
+joblib_file = open("static/tokenizer.p", "rb")
 # Load from file
 tokenizer = joblib.load(joblib_file)
 
